@@ -24,6 +24,24 @@
 {{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" {{ template "integrity" $styles }}>
 
+<!-- custom CSS (site wide) under ./assets/css/ -->
+{{ if .Site.Params.customCSS }}
+{{ $style := resources.Match "css/**.css" | resources.Concat "custom.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" media="screen" />
+{{ end }}
+
+<!-- custom CSS (page-wise) under each page folder -->
+{{ if .IsPage }}
+{{ if .Params.css.file }}
+  {{ with .Resources.GetMatch "**.css" }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{ end }}
+{{ end }}
+{{ if .Params.css.src }}
+  <link rel="stylesheet" href="{{ .Params.css.src }}" media="screen" />
+{{ end }}
+{{ end }}
+
 {{- if default true .Site.Params.BookSearch -}}
   {{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
   {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
