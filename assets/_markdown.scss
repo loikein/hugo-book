@@ -72,18 +72,25 @@
     padding: 0 $padding-4;
     background: var(--gray-200);
     border-radius: $border-radius;
-    font-size: 0.875em;
+    font-size: 0.875rem;
   }
 
-  pre {
+  .chroma {
     padding: $padding-16;
     background: var(--gray-100);
     border-radius: $border-radius;
     overflow-x: auto;
+    font-size: 0.875rem;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
 
-    code {
+    code, table {
       padding: 0;
       background: none;
+
+      pre {
+        padding: 0;
+      }
     }
   }
 
