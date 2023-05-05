@@ -73,6 +73,7 @@
     background: var(--gray-200);
     border-radius: $border-radius;
     font-size: 0.875rem;
+    overflow-wrap: anywhere;
   }
 
   .chroma {
