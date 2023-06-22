@@ -33,7 +33,7 @@
 
 ## Requirements
 
-- Hugo 0.79 or higher
+- Hugo 0.111.3 or higher
 - Hugo extended version, read more [here](https://gohugo.io/news/0.48-relnotes/)
 
 ## Installation
