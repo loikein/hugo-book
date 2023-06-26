@@ -43,6 +43,7 @@
       padding: $padding-8 $padding-16;
       border-bottom: $padding-1 transparent;
       cursor: pointer;
+      user-select: none;
     }
 
     .book-tabs-content {
