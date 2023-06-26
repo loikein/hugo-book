@@ -5,9 +5,12 @@
   background-color: rgba(map-get($hint-colors, "info"), 0.1);
 }
 
-.book-tabs {
-  input[type="radio"]:checked + label,
-  input[type="radio"]:checked + label + .book-tabs-content {
-    background-color: rgba(map-get($hint-colors, "info"), 0.1);
+.markdown .book-tabs {
+  input[type="radio"]:checked + label {
+    border-bottom: none;
+
+    &, + .book-tabs-content {
+      background-color: rgba(map-get($hint-colors, "info"), 0.1);
+    }
   }
 }
