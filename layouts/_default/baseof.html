@@ -75,6 +75,11 @@
 
 {{ define "main" }}
   <article class="markdown">
+    {{- with .Page -}}
+      {{- partial "docs/title" .Page | printf "%s%s" "# " | printf "%s" | markdownify -}}
+    {{- else -}}
+      {{- .Name | printf "%s%s" "# " | printf "%s" | markdownify -}}
+    {{- end -}}
     {{- .Content -}}
   </article>
 {{ end }}
