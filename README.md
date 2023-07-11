@@ -25,6 +25,7 @@ Showcase: [Markdown tests | loikein's wiki](https://wiki.loikein.one/test-page/)
 - Simplified LaTeX support
 - kbd shortcode
 - No-JS GitHub Gist shortcode
+- Breadcrumbs on every page
 - Other minor CSS tweaks
 
 ## Features
