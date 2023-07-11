@@ -75,6 +75,7 @@
 
 {{ define "main" }}
   <article class="markdown">
+    {{ partial "docs/breadcrumbs" . }}
     {{- with .Page -}}
       {{- partial "docs/title" .Page | printf "%s%s" "# " | printf "%s" | markdownify -}}
     {{- else -}}

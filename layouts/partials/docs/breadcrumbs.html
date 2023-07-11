@@ -1,0 +1,9 @@
+<nav class="breadcrumbs">
+<ol>
+  {{- range .Ancestors.Reverse -}}
+  <li><a href="{{ .RelPermalink }}">{{- .Title -}}</a></li><span class="breadcrumb-spacer">›</span>
+  {{- end -}}
+  <li><a href="{{ .RelPermalink }}">{{- .Title -}}</a></li>
+</ol>
+</nav>
+{{/* https://hugocodex.org/add-ons/breadcrumbs/ */}}
