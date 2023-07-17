@@ -1,0 +1,9 @@
+<span class="kbd-wrapper">
+{{- range $i, $e := .Params -}}
+{{ if $i }}<span class="kbd-plus">+</span>{{ end }}<kbd>{{ $e }}</kbd>
+{{- end -}}
+</span>
+{{/*
+https://discourse.gohugo.io/t/build-shortcode-with-array-like-parameters/18460/3
+https://discourse.gohugo.io/t/howto-delimiter-separated-tags/146
+*/}}

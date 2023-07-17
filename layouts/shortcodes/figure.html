@@ -1,0 +1,32 @@
+{{ $alt := .Get "alt" | default "image" }}
+{{ $width := .Get "w" | default "100%" }}
+
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+<!-- Begin a tag -->
+{{- if .Get "link" -}}
+<a href="{{ .Get "link" }}"
+   {{ with .Get "target" }} target="{{ . }}"{{ end }}
+   {{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+{{- end -}}
+<!-- Begin img tag -->
+{{- if .Get "src" }}
+<img src="{{ .Get "src" }}"
+{{- else }}
+<img src="/{{ .Get "folder" | default "img" }}/{{ .Get "name" }}"
+{{- end }}
+     loading="lazy"
+     alt="{{ $alt | markdownify| plainify }}"
+     style='max-width: {{ $width }}; {{- with .Get "h" }}max-height: {{ . }};{{ end -}}'
+/><!-- Close img tag -->
+{{- if .Get "link" -}}</a>{{- end -}}
+<!-- Close a tag -->
+{{- if .Get "title" -}}
+<figcaption>
+    <p>
+    {{- with .Get "attrlink" }}<a href="{{ . }}">{{- end -}}
+    {{- .Get "title" | markdownify -}}
+    {{- if .Get "attrlink" }}</a>{{ end }}
+    </p>
+</figcaption>
+{{- end }}
+</figure>
