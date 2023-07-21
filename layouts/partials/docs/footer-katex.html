@@ -1,4 +1,4 @@
-{{ if and (not .Params.disable_mathjax) (or (in (string .Content) "\\") (in (string .Content) "$")) }}
+{{ if and (not .Params.disable_latex) (or (in (string .Content) "\\") (in (string .Content) "$")) }}
 
 <!-- <script src="{{ "/js/math-code.js" | relURL }}"></script> -->
 {{ $script := resources.Get "latex-fix.js" | resources.Minify }}
