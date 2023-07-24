@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ default .Site.Language.Lang .Params.Language }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}">{{/* needsfix: there is no .Language.LanguageDirection */}}
+<html lang="{{ default .Site.Language.LanguageCode .Params.Language }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}">{{/* needsfix: there is no .Language.LanguageDirection */}}
 <head>
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
