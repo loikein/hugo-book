@@ -1,15 +1,12 @@
 {{ if and (not .Params.disable_latex) (or (in (string .Content) "\\") (in (string .Content) "$")) }}
 
-<!-- <script src="{{ "/js/math-code.js" | relURL }}"></script> -->
-{{ $script := resources.Get "latex-fix.js" | resources.Minify }}
-{{ with $script.Content }}
-  <script>{{ . | safeJS }}</script>
-{{ end }}
+{{ $js_latex_fix := resources.Get "js/latex-fix.js" | resources.Minify }}
+<script src="{{ $js_latex_fix.RelPermalink }}"></script>
 
 <link rel="stylesheet" href="{{ .Site.Params.KaTeXCDN }}/katex@{{ .Site.Params.KaTeXVersion }}/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="{{ .Site.Params.KaTeXCDN }}/katex@{{ .Site.Params.KaTeXVersion }}/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="{{ .Site.Params.KaTeXCDN }}/katex@{{ .Site.Params.KaTeXVersion }}/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
-<!-- do not add onload attributes, breaks settings below -->
+{{/* do not add onload attributes, breaks settings below */}}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement(document.body, {

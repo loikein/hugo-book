@@ -18,8 +18,6 @@
 {{ partial "docs/inject/menu-after" . }}
 </nav>
 
-<!-- Restore menu position as soon as possible to avoid flickering -->
-{{ $script := resources.Get "menu-reset.js" | resources.Minify }}
-{{ with $script.Content }}
-  <script>{{ . | safeJS }}</script>
-{{ end }}
+{{/* Restore menu position as soon as possible to avoid flickering */}}
+{{ $script := resources.Get "js/menu-reset.js" | resources.Minify }}
+<script src="{{ $script.RelPermalink }}"></script>

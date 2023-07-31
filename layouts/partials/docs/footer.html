@@ -22,7 +22,6 @@
 
 </div>
 
-{{ $script := resources.Get "clipboard.js" | resources.Minify }}
-{{ with $script.Content }}
-  <script>{{ . | safeJS }}</script>
-{{ end }}
+{{/* copy code */}}
+{{ $js_copy_code := resources.Get "js/copy-code.js" | resources.Minify }}
+<script src="{{ $js_copy_code.RelPermalink }}"></script>

@@ -1,19 +1,30 @@
 baseURL: https://example.com/
 title: Hugo Book
 theme: hugo-book
-themesDir: "../../"
 
 # Book configuration
 disablePathToLower: true
 enableGitInfo: true
 
-# Needed for mermaid/katex shortcodes
+# Needed for mermaid shortcodes
 markup:
   goldmark:
     renderer:
       unsafe: true
   tableOfContents:
     startLevel: 1
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    hl_Lines: ''
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    noClasses: true
+    style: nord
+    # https://xyproto.github.io/splash/docs/longer/all.html
+    tabWidth: 4
+
 
 # Multi-lingual mode config
 # There are different options to translate files
@@ -37,7 +48,7 @@ menu:
   # before: []
   after:
     - name: "Github"
-      url: "https://github.com/alex-shpak/hugo-book"
+      url: "https://github.com/loikein/hugo-book"
       weight: 10
     - name: "Hugo Themes"
       url: "https://themes.gohugo.io/hugo-book/"
@@ -111,3 +122,6 @@ params:
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
   BookTranslatedOnly: false
+
+  KaTeXVersion: 0.16.8
+  KaTeXCDN: //cdn.jsdelivr.net/npm

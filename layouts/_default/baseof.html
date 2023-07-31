@@ -10,25 +10,25 @@
   <main class="container flex">
     <aside class="book-menu">
       <div class="book-menu-content">
-        {{ template "menu" . }} <!-- Left menu Content -->
+        {{ template "menu" . }} {{/* Left menu Content */}}
       </div>
     </aside>
 
     <div class="book-page">
       <header class="book-header">
-        {{ template "header" . }} <!-- Mobile layout header -->
+        {{ template "header" . }} {{/* Mobile layout header */}}
       </header>
 
       {{ partial "docs/inject/content-before" . }}
-      {{ template "main" . }} <!-- Page Content -->
+      {{ template "main" . }} {{/* Page Content */}}
       {{ partial "docs/inject/content-after" . }}
 
       <footer class="book-footer">
-        {{ template "footer" . }} <!-- Footer under page content -->
+        {{ template "footer" . }} {{/* Footer under page content */}}
         {{ partial "docs/inject/footer" . }}
       </footer>
 
-      {{ template "comments" . }} <!-- Comments block -->
+      {{ template "comments" . }} {{/* Comments block */}}
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
@@ -36,7 +36,7 @@
     {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
     <aside class="book-toc">
       <div class="book-toc-content">
-        {{ template "toc" . }} <!-- Table of Contents -->
+        {{ template "toc" . }} {{/* Table of Contents */}}
       </div>
     </aside>
     {{ end }}

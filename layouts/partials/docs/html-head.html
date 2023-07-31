@@ -20,20 +20,20 @@
   <link rel="alternate" hreflang="{{ default .Language.Lang .Site.LanguageCode }}" href="{{ .Permalink }}" title="{{ partial "docs/title" . }}">
 {{- end -}}
 
-<!-- normalize -->
+{{/* normalize */}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
-{{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+{{/* Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website */}}
+{{- $styles := resources.Get "scss/book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" {{ template "integrity" $styles }}>
 
-<!-- custom CSS (site wide) under ./assets/css/ -->
+{{/* custom CSS (site wide) under ./assets/css/ */}}
 {{ if .Site.Params.customCSS }}
 {{ $style := resources.Match "css/**.css" | resources.Concat "custom.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" media="screen" />
 {{ end }}
 
-<!-- custom CSS (page-wise) under each page folder -->
+{{/* custom CSS (page-wise) under each page folder */}}
 {{ if .IsPage }}
 {{ if .Params.css.file }}
   {{ with .Resources.GetMatch "**.css" }}
@@ -47,19 +47,20 @@
 
 {{- if default true .Site.Params.BookSearch -}}
   {{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
-  {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
-  <script defer src="{{ "flexsearch.min.js" | relURL }}"></script>
+  {{- $searchJS := resources.Get "js/search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
+  {{- $flexsearch := resources.Get "js/flexsearch.min.js" }}
+  <script defer src="{{ $flexsearch.RelPermalink }}"></script>
   <script defer src="{{ $searchJS.RelPermalink }}" {{ template "integrity" $searchJS }}></script>
 {{ end -}}
 
 {{- if .Site.Params.BookServiceWorker -}}
-  {{- $swJS := resources.Get "sw-register.js" | resources.ExecuteAsTemplate "sw.js" . | resources.Minify | resources.Fingerprint }}
+  {{- $swJS := resources.Get "js/sw-register.js" | resources.ExecuteAsTemplate "sw.js" . | resources.Minify | resources.Fingerprint }}
   <script defer src="{{ $swJS.RelPermalink }}" {{ template "integrity" $swJS }}></script>
 {{ end -}}
 
 {{- template "_internal/google_analytics.html" . -}}
 
-<!-- RSS -->
+{{/* RSS */}}
 {{- with .OutputFormats.Get "rss" -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 {{ end -}}

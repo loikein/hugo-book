@@ -1,6 +1,9 @@
 {{ if not (.Page.Scratch.Get "mermaid") }}
-<!-- Include mermaid only first time -->
-<script src="{{ "mermaid.min.js" | relURL }}"></script>
+
+{{/* Include mermaid only first time */}}
+{{ $js_mermaid := resources.Get "js/mermaid.min.js" }}
+<script src="{{ $js_mermaid.RelPermalink }}"></script>
+
 {{ with resources.Get "mermaid.json" }}
   <script>mermaid.initialize({{ .Content | safeJS }})</script>
 {{ end }}
