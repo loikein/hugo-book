@@ -1,4 +1,6 @@
-# Mermaid Chart
+---
+title: Mermaid charts
+---
 
 [MermaidJS](https://mermaid-js.github.io/) is library for generating svg charts and diagrams from text.
 

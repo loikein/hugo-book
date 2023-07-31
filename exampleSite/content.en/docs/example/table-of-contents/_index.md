@@ -1,9 +1,7 @@
 ---
 weight: 10
+title: "Table of contents"
 ---
-
-# Ubi loqui
-
 ## Mentem genus facietque salire tempus bracchia
 
 Lorem markdownum partu paterno Achillem. Habent amne generosi aderant ad pellem

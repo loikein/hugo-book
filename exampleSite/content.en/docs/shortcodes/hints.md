@@ -1,4 +1,6 @@
-# Hints
+---
+title: Hints
+---
 
 Hint shortcode can be used as hint/alerts/notification block.  
 There are 3 colors to choose: `info`, `warning` and `danger`.

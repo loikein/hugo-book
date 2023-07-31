@@ -2,8 +2,6 @@
 title: With ToC
 weight: 1
 ---
-# Caput vino delphine in tamen vias
-
 ## Cognita laeva illo fracta
 
 Lorem markdownum pavent auras, surgit nunc cingentibus libet **Laomedonque que**

@@ -1,10 +1,9 @@
 ---
 bookHidden: true
+title: Hidden
 ---
 
-# This page is hidden in menu
-
-# Quondam non pater est dignior ille Eurotas
+## This page is hidden in menu
 
 ## Latent te facies
 

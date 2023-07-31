@@ -3,9 +3,6 @@ title: Without ToC
 weight: 2
 bookToc: false
 ---
-
-# At me ipso nepotibus nunc celebratior genus
-
 ## Tanto oblite
 
 Lorem markdownum pectora novis patenti igne sua opus aurae feras materiaque

@@ -1,5 +1,6 @@
 ---
 bookCollapseSection: true
+title: Section
 ---
 
 # Section
@@ -12,4 +13,4 @@ Section renders pages in section as definition list, using title and description
 {{</* section */>}}
 ```
 
-{{<section>}}
+{{< section >}}

@@ -1,3 +1,4 @@
 ---
 bookFlatSection: true
+title: Shortcodes
 ---
