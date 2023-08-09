@@ -1,8 +1,8 @@
 <nav>
-{{ partial "docs/brand" . }}
-{{ partial "docs/search" . }}
+{{ partialCached "docs/brand" . }}
+{{ partialCached "docs/search" . }}
 {{ if .Site.IsMultiLingual }}
-  {{ partial "docs/languages" . }}
+  {{ partialCached "docs/languages" . }}
 {{ end }}
 
 {{ partial "docs/inject/menu-before" . }}
