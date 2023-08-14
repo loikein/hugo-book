@@ -10,5 +10,11 @@
 @import "markdown";
 @import "shortcodes";
 
+@import "plugins/breadcrumbs";
+@import "plugins/copy-code";
+@import "plugins/skip-to-main";
+// @import "plugins/scrollbars";
+// @import "plugins/numbered";
+
 // Custom defined styles
 @import "custom";

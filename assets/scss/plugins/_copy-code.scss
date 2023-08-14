@@ -1,0 +1,39 @@
+// https://simplernerd.com/hugo-add-copy-to-clipboard-button/
+
+.highlight {
+  position: relative;
+}
+
+.copy-code-button {
+  color: black;
+  background-color: rgba(255, 255, 255, 50%);
+  border: none;
+  border-radius: 6px;
+  padding: 5px 5px 2px 5px;
+  font-size: 1rem;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  margin: 14px;
+  transition: .1s;
+  opacity: 0.5;
+
+  &>svg {
+    fill: black;
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  pre:active+&,
+  pre:focus+&,
+  div.highlight:active>&,
+  div.highlight:focus>& {
+    @include outline;
+    opacity: 1;
+  }
+}

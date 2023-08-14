@@ -38,6 +38,10 @@
   margin: 0 auto;
 }
 
+.tabindex:focus {
+    outline: none;
+}
+
 .text-center {
   text-align: center;
 }
