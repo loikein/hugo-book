@@ -19,7 +19,8 @@ $endLevel: 6;
   }
 }
 
-.book-toc nav ul {
+.book-toc nav ul,
+#TableOfContents ul {
   li {
     counter-increment: item;
 

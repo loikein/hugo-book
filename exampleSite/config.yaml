@@ -12,7 +12,9 @@ markup:
     renderer:
       unsafe: true
   tableOfContents:
-    startLevel: 1
+    startLevel: 2
+    ordered: false
+    endLevel: 3
   highlight:
     codeFences: true
     guessSyntax: true

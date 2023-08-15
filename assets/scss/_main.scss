@@ -2,6 +2,7 @@ html {
   font-size: $font-size-base;
   scroll-behavior: smooth;
   touch-action: manipulation;
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   box-sizing: border-box;
+
   * {
     box-sizing: inherit;
   }
@@ -106,6 +108,7 @@ ul.pagination {
     padding: $padding-16;
     background: var(--body-background);
     user-select: none;
+    overscroll-behavior-y: none;
 
     @include fixed;
   }
@@ -238,21 +241,20 @@ body[dir="rtl"] .book-menu {
 
 .book-toc {
   flex: 0 0 $toc-width;
-  font-size: $font-size-12;
+  font-size: $font-size-14;
 
   .book-toc-content {
     width: $toc-width;
     padding: $padding-16;
+    overscroll-behavior-y: none;
 
     @include fixed;
   }
 
-  a {
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 0;
   }
 
   img {
@@ -262,6 +264,17 @@ body[dir="rtl"] .book-menu {
 
   nav > ul > li:first-child {
     margin-top: 0;
+  }
+}
+
+// for desktop & mobile toc
+#TableOfContents {
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -301,8 +314,8 @@ body[dir="rtl"] .book-menu {
 .book-header aside,
 .markdown {
   transition: 0.2s ease-in-out;
-  transition-property: transform, margin, opacity, visibility;
-  will-change: transform, margin, opacity;
+  transition-property: transform, margin, visibility;
+  // will-change: transform, margin;
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
