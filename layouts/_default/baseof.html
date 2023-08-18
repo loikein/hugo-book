@@ -35,10 +35,11 @@
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
+    {{/* Desktop TOC */}}
     {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
     <aside class="book-toc">
       <div class="book-toc-content">
-        {{ template "toc" . }} {{/* Table of Contents */}}
+        {{ template "toc" . }}
       </div>
     </aside>
     {{ end }}
@@ -55,10 +56,13 @@
 {{ define "header" }}
   {{ partial "docs/header" . }}
 
+  {{/* Mobild TOC */}}
   {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
   <aside class="hidden clearfix">
     {{ template "toc" . }}
+    <hr />
   </aside>
+
   {{ end }}
 {{ end }}
 

@@ -49,22 +49,33 @@ img {
   @include outline;
 }
 
-aside nav ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
-  li {
-    margin: 1em 0;
-    position: relative;
+// All aside, all screen sizes
+aside {
+  hr {
+    height: $padding-1;
+    border: none;
+    background: var(--gray-200);
+    margin-top: $padding-16;
+    margin-bottom: 0;
   }
 
-  a {
-    display: block;
-  }
+  nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 
-  ul {
-    padding-inline-start: $padding-16;
+    li {
+      margin: 1em 0;
+      position: relative;
+    }
+
+    a {
+      display: block;
+    }
+
+    ul {
+      padding-inline-start: $padding-16;
+    }
   }
 }
 
@@ -239,6 +250,7 @@ body[dir="rtl"] .book-menu {
   }
 }
 
+// For desktop TOC
 .book-toc {
   flex: 0 0 $toc-width;
   font-size: $font-size-14;
@@ -267,7 +279,7 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-// for desktop & mobile toc
+// For both desktop & mobile TOC
 #TableOfContents {
   a {
     text-decoration: none;
