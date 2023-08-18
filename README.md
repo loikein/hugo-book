@@ -22,11 +22,19 @@
 
 Showcase: [Markdown tests | loikein's wiki](https://wiki.loikein.one/test-page/)
 
+The `exampleSite` is also mostly up-to-date.
+
+- Style tweaks for readability
 - Simplified LaTeX support
-- kbd shortcode
-- No-JS GitHub Gist shortcode
-- Breadcrumbs on every page
-- Other minor CSS tweaks
+- Shortcodes:
+  + kbd 
+  + No-JS GitHub Gist
+  + Twitter \(to be updated with new API endpoint\)
+- Layout:
+  + Breadcrumbs on every page
+  + Make sure every page has and only has one `<h1>`
+  + Skip-to-main button \& other a11y improvements
+- Cleaner assets folder structure
 
 ## Features
 
