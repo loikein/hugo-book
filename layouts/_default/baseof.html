@@ -37,7 +37,7 @@
 
     {{/* Desktop TOC */}}
     {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
-    <aside class="book-toc">
+    <aside class="book-toc" aria-label="Page navigation for desktop">
       <div class="book-toc-content">
         {{ template "toc" . }}
       </div>
@@ -58,7 +58,7 @@
 
   {{/* Mobild TOC */}}
   {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
-  <aside class="hidden clearfix">
+  <aside class="hidden clearfix" aria-label="Page navigation for mobile">
     {{ template "toc" . }}
     <hr />
   </aside>
