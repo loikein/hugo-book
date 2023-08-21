@@ -6,7 +6,11 @@
   </dt>
   {{ if (in $.Params "summary") -}}
   <dd class="markdown-inner">
-    {{ default .Summary .Description }}
+    {{- if .Description -}}
+      {{- .Description -}}
+    {{- else -}}
+      {{- .Summary | truncate 140 -}}
+    {{- end -}}
   </dd>
   {{ end -}}
 {{ end }}
