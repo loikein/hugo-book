@@ -355,7 +355,7 @@ body[dir="rtl"] .book-menu {
     @include outline;
   }
 
-  #menu-control:checked ~ main {
+  #menu-control:checked ~ .container {
     .book-menu {
       visibility: initial;
     }
@@ -383,14 +383,14 @@ body[dir="rtl"] .book-menu {
     @include outline;
   }
 
-  #toc-control:checked ~ main {
+  #toc-control:checked ~ .container {
     .book-header aside {
       display: block;
     }
   }
 
   // for RTL support
-  body[dir="rtl"] #menu-control:checked ~ main {
+  body[dir="rtl"] #menu-control:checked ~ .container {
     .book-menu .book-menu-content {
       transform: translateX(-$menu-width);
     }

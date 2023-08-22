@@ -9,7 +9,7 @@
   <input type="checkbox" class="hidden toggle" id="toc-control" />
   <a class="screen-reader screen-reader-focusable" href="#main">Skip to main content</a>
 
-  <main class="container flex">
+  <div class="container flex">
     <aside class="book-menu">
       <div class="book-menu-content tabindex">
         {{ template "menu" . }} {{/* Left menu Content */}}
@@ -43,7 +43,7 @@
       </div>
     </aside>
     {{ end }}
-  </main>
+  </div>
 
   {{ partial "docs/inject/body" . }}
 </body>
@@ -81,14 +81,14 @@
 
 {{ define "main" }}
   {{ partial "docs/breadcrumbs" . }}
-  <article class="markdown" id="main">
+  <main class="markdown" id="main">
     {{- with .Page -}}
       {{- partial "docs/title" .Page | printf "%s%s" "# " | printf "%s" | markdownify -}}
     {{- else -}}
       {{- .Name | printf "%s%s" "# " | printf "%s" | markdownify -}}
     {{- end -}}
     {{- .Content -}}
-  </article>
+  </main>
 {{ end }}
 
 {{ define "toc" }}
