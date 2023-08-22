@@ -1,6 +1,6 @@
 # Hugo Book Theme
 
-[![Hugo](https://img.shields.io/badge/hugo-0.111.3-blue.svg)](https://gohugo.io)
+[![Hugo](https://img.shields.io/badge/hugo-0.115.0-blue.svg)](https://gohugo.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Build with Hugo](https://github.com/alex-shpak/hugo-book/workflows/Build%20with%20Hugo/badge.svg)
 
@@ -51,21 +51,22 @@ The `exampleSite` is also mostly up-to-date.
 
 ## Requirements
 
-- Hugo 0.111.3 or higher
+- Hugo 0.115.0 or higher \(due to use of new language configuration\)
 - Hugo extended version, read more [here](https://gohugo.io/news/0.48-relnotes/)
 
 ## Installation
 
 ### Install as git submodule
+
 Navigate to your hugo project root and run:
 
-```
+```sh
 git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book
 ```
 
 Then run hugo (or set `theme = "hugo-book"`/`theme: hugo-book` in configuration file)
 
-```
+```sh
 hugo server --minify --theme hugo-book
 ```
 
@@ -74,7 +75,8 @@ hugo server --minify --theme hugo-book
 You can also add this theme as a Hugo module instead of a git submodule.
 
 Start with initializing hugo modules, if not done yet:
-```
+
+```sh
 hugo mod init github.com/repo/path
 ```
 
