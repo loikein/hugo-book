@@ -1,0 +1,32 @@
+{{ define "main" }}
+  {{ partial "docs/breadcrumbs" . }}
+  <main class="markdown" id="main">
+    {{- .Title | printf "%s%s" "# " | printf "%s" | markdownify -}}
+
+    {{- if .Content -}}
+      {{ .Content }}
+    {{- else -}}
+      <h2 class="nonumber">Pages in this section:</h2>
+      <dl>
+      {{ range .Page.Pages }}
+        <dt>
+          <a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a>
+        </dt>
+        <dd class="markdown-inner">
+          {{- if .Description -}}
+            {{- .Description -}}
+          {{- else if .IsPage -}}
+            {{- .Summary | truncate 140 -}}
+          {{- else -}}
+            <ul>
+              {{ range .Pages }}
+              <li><a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a></li>
+              {{ end }}
+            </ul>
+          {{- end -}}
+        </dd>
+      {{ end }}
+      </dl>
+    {{- end -}}
+  </main>
+{{ end }}
