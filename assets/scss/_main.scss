@@ -2,7 +2,6 @@ html {
   font-size: $font-size-base;
   scroll-behavior: smooth;
   touch-action: manipulation;
-  overscroll-behavior-y: none;
 }
 
 body {
@@ -119,7 +118,6 @@ ul.pagination {
     padding: $padding-16;
     background: var(--body-background);
     user-select: none;
-    overscroll-behavior-y: none;
 
     @include fixed;
   }
@@ -258,7 +256,6 @@ body[dir="rtl"] .book-menu {
   .book-toc-content {
     width: $toc-width;
     padding: $padding-16;
-    overscroll-behavior-y: none;
 
     @include fixed;
   }

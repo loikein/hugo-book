@@ -183,6 +183,10 @@
     &[open] summary {
       margin-bottom: 0;
     }
+
+    .markdown-inner {
+      padding-top: $padding-16;
+    }
   }
 
   figure {

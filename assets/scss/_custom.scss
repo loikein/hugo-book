@@ -1,16 +1,22 @@
 /* You can add custom styles here. */
 
 // @import "plugins/numbered";
+
+html,
+.book-menu .book-menu-content,
+.book-toc .book-toc-content {
+  overscroll-behavior-y: none;
+}
+
 .markdown details {
-  background-color: rgba(map-get($hint-colors, "info"), 0.1);
+  summary {
+    background-color: rgba(map-get($hint-colors, "info"), 0.1);
+  }
 }
 
 .markdown .book-tabs {
   input[type="radio"]:checked + label {
     border-bottom: none;
-
-    &, + .book-tabs-content {
-      background-color: rgba(map-get($hint-colors, "info"), 0.1);
-    }
+    background-color: rgba(map-get($hint-colors, "info"), 0.1);
   }
 }
