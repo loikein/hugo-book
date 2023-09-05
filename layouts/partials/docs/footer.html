@@ -29,3 +29,7 @@
 {{/* add linebreak for inline code */}}
 {{ $js_break_code := resources.Get "js/code-linebreak.js" | resources.Minify }}
 <script src="{{ $js_break_code.RelPermalink }}"></script>
+{{/* fallback */}}
+<noscript>
+<style>.markdown code{ word-break: break-all; }</style>
+</noscript>
