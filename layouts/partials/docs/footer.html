@@ -22,6 +22,10 @@
 
 </div>
 
-{{/* copy code */}}
-{{ $js_copy_code := resources.Get "js/copy-code.js" | resources.Minify }}
+{{/* add copy button for code blocks */}}
+{{ $js_copy_code := resources.Get "js/code-copy.js" | resources.Minify }}
 <script src="{{ $js_copy_code.RelPermalink }}"></script>
+
+{{/* add linebreak for inline code */}}
+{{ $js_break_code := resources.Get "js/code-linebreak.js" | resources.Minify }}
+<script src="{{ $js_break_code.RelPermalink }}"></script>
