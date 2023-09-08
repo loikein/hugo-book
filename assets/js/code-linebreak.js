@@ -1,5 +1,5 @@
-// https://stackoverflow.com/a/29497876
-(function() {
+(function codeLineBreak() {
+  // https://stackoverflow.com/a/29497876
   var i, text, code, codes = document.getElementsByTagName('code');
   for (i = 0; i < codes.length;) {
     code = codes[i];

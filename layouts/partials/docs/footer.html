@@ -26,7 +26,10 @@
 {{ $js_copy_code := resources.Get "js/code-copy.js" | resources.Minify }}
 <script src="{{ $js_copy_code.RelPermalink }}"></script>
 
+{{ partial "docs/footer-latex" . }}
+
 {{/* add linebreak for inline code */}}
+{{/* goes after latex to prevent clashing */}}
 {{ $js_break_code := resources.Get "js/code-linebreak.js" | resources.Minify }}
 <script src="{{ $js_break_code.RelPermalink }}"></script>
 {{/* fallback */}}

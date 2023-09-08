@@ -1,4 +1,5 @@
-(function() {
+(function latexFix() {
+  // https://yihui.org/en/2018/07/latex-math-markdown/
   var i, text, code, codes = document.getElementsByTagName('code');
   for (i = 0; i < codes.length;) {
     code = codes[i];
@@ -16,7 +17,5 @@
       }
     }
     i++;
-  }
+  };
 })();
-
-// https://yihui.org/en/2018/07/latex-math-markdown/
