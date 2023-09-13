@@ -1,0 +1,10 @@
+// Allow long equations to scroll
+.katex-display {
+  overflow: auto hidden;
+}
+
+// Fix numbered equations overflow in KaTeX
+// https://github.com/KaTeX/KaTeX/issues/3254#issuecomment-980396153
+.katex .vlist-t2 {
+  margin-right: 0 !important;
+}

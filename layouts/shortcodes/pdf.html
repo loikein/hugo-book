@@ -5,6 +5,8 @@
 {{/*
 https://stackoverflow.com/a/1244854/10668706
 https://stackoverflow.com/a/72199049/10668706
+
+Does not support iOS Safari.
 */}}
 <p id="{{ $title | anchorize}}"><a href="{{ $src }}">{{ $title }}</a></p>
 <object data="{{ $src }}" type="application/pdf" aria-labelledby="{{ $title | anchorize}}" style="width:{{ $w }}; height: {{ $h }};">

@@ -1,0 +1,29 @@
+.markdown dl {
+  &:not(.post-series) {
+    display: grid;
+    gap: 0.5rem 1rem;
+  }
+
+  dt {
+    margin-top: 0;
+    grid-column: 1;
+  }
+
+  dd {
+    margin-bottom: 0;
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (min-width: $mobile-breakpoint) {
+  .markdown dl {
+    &:not(.post-series) {
+      grid-template-columns: fit-content(50%) auto;
+    }
+
+    dd {
+      grid-column: 2;
+      margin-left: 0;
+    }
+  }
+}

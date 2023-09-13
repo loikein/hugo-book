@@ -102,4 +102,51 @@
       }
     }
   }
+
+  // {{< kbd >}}
+  kbd {
+    border: 1px solid var(--gray-600);
+    box-shadow: 0 2px 0 0 var(--gray-600);
+    font-size: 0.875em;
+    border-radius: $border-radius;
+    padding: .1rem .3rem; // $padding-4 $padding-8;
+  }
+  .kbd-wrapper .kbd-plus {
+    margin: 0 $padding-4;
+  }
+
+  // {{< gist >}}
+  .gist-data {
+    max-height: 256px;
+    overflow: auto;
+  }
+
+  .gist__name {
+    font-family: 'Roboto Mono', monospace;
+    font-size: .875em;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    background-color: var(--gray-100);
+    border-bottom: 1px solid var(--gray-500);
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+  }
+  .gist__name--lang {
+    align-self: flex-end;
+  }
+  .gist__name+.highlight {
+    margin-top: 0;
+    padding-top: 0;
+
+    &>.chroma {
+      margin-top: 0;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    &>.copy-code-button {
+      margin-top: 6px;
+    }
+  }
 }
