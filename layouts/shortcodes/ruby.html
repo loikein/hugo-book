@@ -1,0 +1,4 @@
+{{- $write := index .Params 0 -}}
+{{- $read  := index .Params 1 -}}
+
+<ruby>{{- $write | markdownify -}}<rp>{{- i18n "ruby_rp_start" -}}</rp><rt>{{- $read | markdownify -}}</rt><rp>{{- i18n "ruby_rp_end" -}}</rp></ruby>{{- print "" -}}
