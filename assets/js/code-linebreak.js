@@ -4,7 +4,7 @@
   // skip <pre> tags and <code> that has children or the nolatex class
   if (code.parentNode.tagName === 'PRE' || code.childElementCount > 0 || code.classList.contains('nolatex')) return;
   // add line break before
-  code.innerHTML = code.innerHTML.replace(/(?<!^|\.|{|\s)(\.|\(|{|\\|@)/g, '<wbr />\$1');
+  code.innerHTML = code.innerHTML.replace(/(?<!^|\.|{|\s)(\.|\(|{|\\|@)(?!\s)/g, '<wbr />\$1');
   // add line break after
   code.innerHTML = code.innerHTML.replace(/(,|})(?!$|}|\s)/g, '\$1<wbr />');
   // add line breaks around
