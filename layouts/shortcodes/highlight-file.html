@@ -1,0 +1,4 @@
+{{/*
+https://discourse.gohugo.io/t/inline-content-from-a-static-file-for-highlighting-in-post-content/34374/2
+ */}}
+{{ highlight (.Page.Resources.GetMatch (.Get "file")).Content (.Get "lang") }}
