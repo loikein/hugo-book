@@ -82,6 +82,7 @@
   {{ partial "docs/breadcrumbs" . }}
   <main class="markdown" id="main">
     {{- .Title | printf "%s%s" "# " | printf "%s" | markdownify -}}
+    {{- partialCached "docs/out-of-date" . -}}
     {{- .Content -}}
   </main>
 {{ end }}
