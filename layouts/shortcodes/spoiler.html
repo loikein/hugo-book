@@ -1,0 +1,27 @@
+{{- with $.Page.Scratch.Get "spoilerCounter" -}}
+{{- $.Page.Scratch.Set "spoilerCounter" (add . 1) -}}
+{{- else -}}
+{{- $.Page.Scratch.Set "spoilerCounter" 1 -}}
+{{- end -}}
+{{- $label := $.Page.Scratch.Get "spoilerCounter" -}}
+
+{{- $block := .Get "block" | default "false" -}}
+{{- $summary := .Get "summary" | default "Spoiler" -}}
+
+{{- if eq $block "false" -}}{{/* if is inline */}}
+{{/*
+  Goal: keyboard friendly.
+  Idea: https://stackoverflow.com/questions/62322298/
+ */}}
+<span aria-label="spoiler">
+<input type="checkbox" id="spoiler-{{ $label }}" class="spoiler-toggle screen-reader" aria-label="spoiler toggle"/>
+<label for="spoiler-{{ $label }}" class="spoiler-inline" aria-label="spoiler content">{{ .Inner | .Page.RenderString }}</label>
+</span>
+{{- else -}}{{/* if is block */}}
+<details class="spoiler" aria-label="spoiler">
+  <summary>{{ $summary | .Page.RenderString }}</summary>
+  <div class="markdown-inner" aria-label="spoiler content">
+    {{ .Inner | .Page.RenderString }}
+  </div>
+</details>
+{{- end -}}

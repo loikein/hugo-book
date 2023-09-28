@@ -149,4 +149,42 @@
       margin-top: 6px;
     }
   }
+
+  // {{< spoiler >}}
+  .spoiler-toggle {
+    &:focus, &:active {
+      outline: none;
+    }
+
+    &:focus + .spoiler-inline,
+    &:active + .spoiler-inline {
+      @include outline;
+    }
+
+    &:not(:checked) {
+      +.spoiler-inline,
+      +.spoiler-inline * {
+        background: var(--gray-600);
+        color: transparent;
+        user-select: none;
+      }
+
+      +.spoiler-inline a {
+        pointer-events: none;
+        cursor: default;
+      }
+
+      +.spoiler-inline img {
+        // https://stackoverflow.com/a/50942954/10668706
+        // targets var(--gray-600) for light theme, looks off in dark theme
+        filter: brightness(0) saturate(100%) invert(50%) sepia(23%) saturate(179%) hue-rotate(167deg) brightness(85%) contrast(88%);
+      }
+    }
+  }
+  details.spoiler {
+    summary {
+      background-color: var(--gray-600);
+      color: white;
+    }
+  }
 }
