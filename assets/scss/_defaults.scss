@@ -46,6 +46,9 @@ $hint-colors: (
   --hint-color-info: #6bf;
   --hint-color-warning: #fd6;
   --hint-color-danger: #f66;
+
+  --diffcode-add: #ddffdd;
+  --diffcode-remove: #ffdddd;
 }
 
 @mixin theme-dark {
@@ -65,4 +68,7 @@ $hint-colors: (
   --hint-color-info: #6bf;
   --hint-color-warning: #fd6;
   --hint-color-danger: #f66;
+
+  --diffcode-add: #ddffdd;
+  --diffcode-remove: #ffdddd;
 }

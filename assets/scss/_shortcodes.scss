@@ -161,17 +161,21 @@
       @include outline;
     }
 
+    &:checked + .spoiler-inline {
+      cursor: zoom-out;
+    }
+
     &:not(:checked) {
       +.spoiler-inline,
       +.spoiler-inline * {
         background: var(--gray-600);
         color: transparent;
         user-select: none;
+        cursor: zoom-in;
       }
 
       +.spoiler-inline a {
         pointer-events: none;
-        cursor: default;
       }
 
       +.spoiler-inline img {
@@ -185,6 +189,45 @@
     summary {
       background-color: var(--gray-600);
       color: white;
+      cursor: zoom-in;
+    }
+
+    &[open] summary {
+      cursor: zoom-out;
+    }
+  }
+
+  // {{< diffcode >}}
+  .chroma {
+    [data-add], [data-remove] {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        right: calc(100% + 3px);
+        font-weight: 700;
+        pointer-events: none;
+        user-select: none;
+        filter: brightness(.7)saturate(2);
+      }
+    }
+
+    [data-add]{
+      background-color: var(--diffcode-add);
+
+      &::before {
+        content: "+";
+        color: var(--diffcode-add);
+      }
+    }
+
+    [data-remove]{
+      background-color: var(--diffcode-remove);
+
+      &::before {
+        content: "-";
+        color: var(--diffcode-remove);
+      }
     }
   }
 }
