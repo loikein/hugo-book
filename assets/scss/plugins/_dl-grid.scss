@@ -1,8 +1,7 @@
-.markdown dl {
-  &:not(.post-series) {
-    display: grid;
-    gap: 0.5rem 1rem;
-  }
+.markdown dl:not(.post-series) {
+  display: grid;
+  gap: 0.5rem 1rem;
+  align-items: end;
 
   dt {
     margin-top: 0;
@@ -16,10 +15,8 @@
 }
 
 @media screen and (min-width: $mobile-breakpoint) {
-  .markdown dl {
-    &:not(.post-series) {
-      grid-template-columns: fit-content(50%) auto;
-    }
+  .markdown dl:not(.post-series) {
+    grid-template-columns: fit-content(50%) auto;
 
     dd {
       grid-column: 2;
