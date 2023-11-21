@@ -1,0 +1,11 @@
+{{ $cols := split .Inner "||" }}
+{{ $lang := .Get "lang" | default ( .Get 0 ) }}
+{{ $lang  = split $lang "," }}
+
+<div class="book-columns flex flex-wrap">
+{{ range $indCol,$col := $cols }}
+   <div class="flex-even markdown-inner" {{ with $lang }} lang="{{ index $lang $indCol }}"{{ end }}>
+   {{ . | $.Page.RenderString (dict "display" "block") }}
+   </div>
+{{ end }}
+</div>

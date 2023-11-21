@@ -69,11 +69,27 @@
   .book-columns {
     margin-left: -$padding-16;
     margin-right: -$padding-16;
+    margin-top: $padding-16;
+    margin-bottom: $padding-16;
 
     > div {
-      margin: $padding-16 0;
+      margin: 0;
       min-width: $body-min-width / 2;
       padding: 0 $padding-16;
+    }
+
+    @media screen and (max-width: $mobile-breakpoint) {
+      & {
+        flex-direction: column;
+
+        > div:first-of-type {
+          margin-bottom: $padding-16;
+        }
+
+        > div:nth-of-type(2n) {
+          margin-left: $padding-16;
+        }
+      }
     }
   }
 
