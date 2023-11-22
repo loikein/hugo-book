@@ -1,0 +1,19 @@
+{{- /*
+Important note:
+This shortcode is intended for {{% cols2 %}} usage.
+The -'s after range and inner, before the HTML tags, are vital for this to work without minify.
+
+References:
+https://discourse.gohugo.io/t/shortcode-and-footnotes/43832
+https://github.com/jmooring/hugo-testing/blob/hugo-forum-topic-43832/layouts/shortcodes/quotebox.html
+*/ -}}
+{{ $cols := split .Inner "||" }}
+{{ $lang := .Get "lang" | default ( .Get 0 ) }}
+{{ $lang  = split $lang "," }}
+<div class="book-columns flex flex-wrap">
+  {{ range $indCol,$col := $cols -}}
+    <div class="flex-even markdown-inner" {{ with $lang }}lang="{{ index $lang $indCol }}"{{ end }}>
+      {{ . -}}
+    </div>
+  {{ end }}
+</div>
