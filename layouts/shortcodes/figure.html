@@ -1,14 +1,13 @@
-{{ $alt := .Get "alt" | default "image" }}
-{{ $width := .Get "w" | default "100%" }}
-
+{{- $alt := .Get "alt" | default "image" -}}
+{{- $width := .Get "w" | default "100%" -}}
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
-{{/* Begin a tag */}}
+{{- /* Begin a tag */ -}}
 {{- if .Get "link" -}}
 <a href="{{ .Get "link" }}"
    {{ with .Get "target" }} target="{{ . }}"{{ end }}
    {{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
 {{- end -}}
-{{/* Begin img tag */}}
+{{- /* Begin img tag */ -}}
 {{- if .Get "src" }}
 <img src="{{ .Get "src" }}"
 {{- else }}
@@ -16,10 +15,10 @@
 {{- end }}
      loading="lazy"
      alt="{{ $alt | markdownify| plainify }}"
-     style='max-width: {{ $width }}; {{- with .Get "h" }}max-height: {{ . }};{{ end -}}'
-/>{{/* Close img tag */}}
+     style='max-width: {{ $width }}; {{ with .Get "h" }}max-height: {{ . }};{{ end }}'
+/>{{- /* Close img tag */ -}}
 {{- if .Get "link" -}}</a>{{- end -}}
-{{/* Close a tag */}}
+{{- /* Close a tag */ -}}
 {{- if .Get "title" -}}
 <figcaption>
     <p>

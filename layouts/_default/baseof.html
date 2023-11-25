@@ -63,7 +63,7 @@
 </html>
 
 {{ define "menu" }}
-  {{ partial "docs/menu" . }}
+  {{ partial "docs/menu" . }}{{/* must be no partialCached here */}}
 {{ end }}
 
 {{ define "header" }}
@@ -80,7 +80,7 @@
 {{ end }}
 
 {{ define "footer" }}
-  {{ partial "docs/footer" . }}
+  {{ partialCached "docs/footer" . }}
 {{ end }}
 
 {{ define "comments" }}

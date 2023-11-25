@@ -9,19 +9,19 @@
 {{- $hlLines  := .Get "hlLines" | default "" -}}
 {{- $optionHlLines := printf "%s" $hlLines | printf "%s%s" "hl_Lines=" | printf "%s" -}}
 {{- $useEmbed := .Get "embed" | default "false" -}}
-{{/*
+{{- /*
 
 json dot: https://discourse.gohugo.io/t/accessing-json-data-files-with-extra-dots-in-file-names/15498/7
 remote file: https://discourse.gohugo.io/t/include-content-of-a-url/27357/7
 https://gohugo.io/content-management/shortcodes/#gist
 https://gohugo.io/functions/highlight/#examples
 
-*/}}
+*/ -}}
 {{- if eq $useEmbed "false" -}}
 {{- range $key, $value := $gistJSON.files -}}
 {{- if (eq $key $fileName) -}}
 <span class="gist__name">
-<span>GitHub Gist: <a href="https://gist.github.com/{{ $userID }}/{{ $gistID }}">{{ printf "%s" $key }}</a></span>
+<span>GitHub Gist: <a href="https://gist.github.com/{{ $userID }}/{{ $gistID }}">{{- printf "%s" $key -}}</a></span>
 <span class="gist__name--lang">{{ $lang }}</span>
 </span>
 {{- $content := printf "%s" $value.content | htmlUnescape | safeHTML -}}
@@ -29,6 +29,6 @@ https://gohugo.io/functions/highlight/#examples
 {{- transform.Highlight $content $lang (delimit $options ",") -}}
 {{- end -}}
 {{- end -}}
-{{- else -}}{{/* if not embed */}}
+{{- else -}}{{- /* if not embed */ -}}
 <script type="application/javascript" src="https://gist.github.com/{{ $userID }}/{{ $gistID }}.js?file={{ $fileName }}"></script>
-{{- end -}}{{/* close embed condition */}}
+{{- end -}}{{- /* close embed condition */ -}}
