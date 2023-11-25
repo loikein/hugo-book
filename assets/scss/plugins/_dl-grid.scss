@@ -22,5 +22,13 @@
       grid-column: 2;
       margin-left: 0;
     }
+
+    // for section shortcode with no summary
+    // https://stackoverflow.com/a/73797984
+    &:not(:has(dd)) {
+      dt {
+        grid-column: span 2;
+      }
+    }
   }
 }

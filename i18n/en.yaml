@@ -12,3 +12,6 @@
 
 - id: bookSearchConfig
   translation: '{ cache: true }'
+
+- id: pagesInThisSection
+  translation: Pages in this section
