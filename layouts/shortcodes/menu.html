@@ -1,0 +1,13 @@
+<span class="menuselection">
+{{- range $i, $e := .Params -}}
+{{- if $i }}<span class="menuselection--sep">▸</span>{{ end }}<span class="menuselection--step">{{ $e | safeHTML }}</span>
+{{- end -}}
+</span>
+{{- /*
+Notes
+-----
+This is used to mimic the menuselection role from sphinx-docs:
+https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-menuselection
+
+safeHTML in the menuselection--step is to enable the use of HTML tags.
+*/ -}}
