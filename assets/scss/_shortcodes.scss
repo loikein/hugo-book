@@ -218,11 +218,9 @@
     summary {
       background-color: var(--gray-600);
       color: white;
-      cursor: zoom-in;
     }
 
     &[open] summary {
-      cursor: zoom-out;
     }
   }
 
