@@ -1,6 +1,6 @@
 <span class="menuselection">
 {{- range $i, $e := .Params -}}
-{{- if $i }}<span class="menuselection--sep">▸</span>{{ end }}<span class="menuselection--step">{{ $e | safeHTML }}</span>
+{{- if $i }}<span class="menuselection--sep">▸</span>{{ end }}<span class="menuselection--step">{{ $e | markdownify | safeHTML }}</span>
 {{- end -}}
 </span>
 {{- /*
