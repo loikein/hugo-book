@@ -1,7 +1,7 @@
-{{/* https://brunty.me/post/display-message-on-old-hugo-entries/ */}}
-{{ $ageDays := div (sub now.Unix .Lastmod.Unix) 86400 }}
-{{ if gt $ageDays 365 }}
+{{- /* https://brunty.me/post/display-message-on-old-hugo-entries/ */ -}}
+{{- $ageDays := div (sub now.Unix .Lastmod.Unix) 86400 -}}
+{{- if gt $ageDays 365 -}}
 <blockquote class="book-hint warning">
 <p>Warning: This post hasn't been updated for over a year. The information may be out of date.</p>
 </blockquote>
-{{ end }}
+{{- end -}}

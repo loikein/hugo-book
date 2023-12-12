@@ -80,7 +80,7 @@
 {{ end }}
 
 {{ define "footer" }}
-  {{ partialCached "docs/footer" . }}
+  {{ partial "docs/footer" . }}
 {{ end }}
 
 {{ define "comments" }}
@@ -95,7 +95,7 @@
   {{ partial "docs/breadcrumbs" . }}
   <main class="markdown" id="main">
     {{- .Title | printf "%s%s" "# " | printf "%s" | markdownify -}}
-    {{- partialCached "docs/out-of-date" . -}}
+    {{- partial "docs/out-of-date" . -}}
     {{- .Content -}}
   </main>
 {{ end }}
