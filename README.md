@@ -24,17 +24,22 @@ Showcase: [Markdown tests | loikein's wiki](https://wiki.loikein.one/test-page/)
 
 The `exampleSite` is also mostly up-to-date.
 
+Main differences
+
 - Style tweaks for readability
 - Simplified LaTeX support
 - Shortcodes:
-  + kbd 
-  + No-JS GitHub Gist
-  + Twitter \(to be updated with new API endpoint\)
-- Layout:
+  + kbd
+  + Highlight file from [page resources](https://gohugo.io/content-management/page-resources/)
+  + No-JS GitHub Gist fetching-highlighting \(subject to [GitHub API rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28)\)
+  + No-JS GitHub repo file fetching-highlighting \(subject to [GitHub API rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28)\)
+  + [Sphinx-like](https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-menuselection) menuselection
+  + Twitter embedding \(not yet updated to new API endpoint\)
+- Other layouts:
   + Breadcrumbs on every page
-  + Make sure every page has and only has one `<h1>`
+  + Make sure every page has one and only one `<h1>`
   + Skip-to-main button \& other a11y improvements
-- Cleaner assets folder structure
+- Clearer `assets/` folder structure
 
 ## Features
 
