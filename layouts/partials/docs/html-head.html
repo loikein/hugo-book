@@ -22,15 +22,15 @@
 {{- end -}}
 
 {{/* normalize */}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@2/modern-normalize.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 {{/* Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website */}}
-{{- $styles := resources.Get "scss/book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+{{- $styles := resources.Get "scss/book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" {{ template "integrity" $styles }}>
 
 {{/* custom CSS (site wide) under ./assets/css/ */}}
 {{ if .Site.Params.customCSS }}
-{{ $style := resources.Match "css/**.css" | resources.Concat "custom.css" | resources.Minify | resources.Fingerprint }}
+{{ $style := resources.Match "css/**.css" | resources.Concat "custom.css" | resources.Minify }}
 <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" media="screen" />
 {{ end }}
 
