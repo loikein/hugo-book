@@ -13,7 +13,7 @@ https://github.com/jmooring/hugo-testing/blob/hugo-forum-topic-43832/layouts/sho
 <div class="book-columns flex flex-wrap">
   {{- range $indCol,$col := $cols -}}
   <div class="flex-even markdown-inner" {{ with $lang }}lang="{{ index $lang $indCol }}"{{ end }}>
-    {{ . -}}
+    {{ . | safeHTML -}}
   </div>
   {{- end -}}
 </div>

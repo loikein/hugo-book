@@ -23,7 +23,7 @@
 <figcaption>
     <p>
     {{- with .Get "attrlink" }}<a href="{{ . }}">{{- end -}}
-    {{- .Get "title" | markdownify -}}
+    {{- .Get "title" | safeHTML | markdownify -}}
     {{- if .Get "attrlink" }}</a>{{ end }}
     </p>
 </figcaption>
