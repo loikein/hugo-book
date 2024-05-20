@@ -144,13 +144,13 @@
     }
   }
 
-  // {{< gist >}}
+  // {{< gist >}} {{< github >}} codeblock
   .gist-data {
     max-height: 256px;
     overflow: auto;
   }
 
-  .gist__name {
+  .code__title {
     font-family: 'Roboto Mono', monospace;
     font-size: .875em;
     display: flex;
@@ -161,10 +161,10 @@
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
   }
-  .gist__name--lang {
+  .code__title--lang {
     align-self: flex-end;
   }
-  .gist__name+.highlight {
+  .code__title+.highlight {
     margin-top: 0;
     padding-top: 0;
 
@@ -174,8 +174,9 @@
       padding-bottom: 0.5rem;
     }
 
-    &>.copy-code-button {
-      margin-top: 6px;
+    & pre+.copy-code-button,
+    & div>.copy-code-button {
+      margin-top: 5px;
     }
   }
 

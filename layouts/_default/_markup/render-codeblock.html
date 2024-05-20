@@ -1,0 +1,117 @@
+{{- /*
+Continuation of
+https://github.com/loikein/hugo-theme-diary/blob/main/layouts/_default/_markup/render-codeblock.html
+for quicker testing
+
+Documentation
+-------------
+https://gohugo.io/templates/render-hooks/#render-hooks-for-code-blocks
+https://www.veriphor.com/articles/code-block-render-hooks/
+https://www.veriphor.com/articles/link-and-image-render-hooks/
+
+Main variables
+--------------
+.Type ... programming language
+.Options ... options for https://gohugo.io/functions/transform/highlight/, case-insensitive
+.Attributes ... any extra param that are not recognised
+.Inner ... the actual code
+
+Notes
+-----
+There must be no space between <pre> and <code>, including the closing tags.
+
+References & reads
+------------------
+https://discourse.gohugo.io/t/is-there-a-good-reason-not-to-have-a-mechanism-facilitating-a-title-for-code-blocks/40554/3
+https://github.com/hugo-fixit/FixIt/blob/master/layouts/_default/_markup/render-codeblock.html
+https://www.andreffs.com/blog/debug-in-hugo/
+https://transparentcode.com/how-to-use-prism-js-in-hugo/
+https://www.thenewdynamic.com/article/hugo-data/manipulation-slices-and-maps/
+
+Debugging helpers
+-----------------
+<p>{{ print .Options }}</p>
+map[hl_lines:1-3 6 lineNumbersInTable:true linenos:true linenostart:19]
+
+<p>{{ print .Attributes }}</p>
+map[title:test title]
+
+<p>{{ printf "%T" $linenostart }}</p>
+int
+
+Do not use
+----------
+<p>{{ . | debug.Dump }}</p>
+Causes Hugo to crash
+
+<p>{{ . | jsonify (dict "indent" " ") }}</p>
+Empty output
+
+<p>{{ printf "%#v" . }}</p>
+Does not print anything useful here
+
+Example result
+--------------
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-md" data-lang="md">
+      <span class="line"><span class="cl"> code here </span></span>
+    </code>
+  </pre>
+</div>
+
+DONE
+----
+Enable lineNos, hl_lines, and linenostart options for unsupported languages
+
+WIP
+---
+Add whitespace display.
+Regex ref: https://stackoverflow.com/a/48954769
+RE2 doc: https://github.com/google/re2/wiki/Syntax/
+Remember: no lookahead, no lookbehind.
+
+Feature request to Chroma: https://github.com/alecthomas/chroma/issues/895
+
+Step 1: Single space
+--------------------
+`( +)((\S|<[^>]+>)*)$` => `<span class="w">$1</span>$2` (only matches the last space per line)
+`<\/span>( +)<span` => `</span><span class="w">$1</span><span` (only matches spaces between tags)
+
+{{- $codeBlock := transform.Highlight .Inner .Type .Options -}}
+{{- $codeBlock  = ($codeBlock | replaceRE `(<\/span>)( +)(<span)` `$1<span class="ws">$2</span>$3`) -}}
+{{- $codeBlock  = ($codeBlock | replaceRE `(<span class="cl">)( +)` `$1<span class="ws">$2</span>`) -}}
+{{- $codeBlock | safeHTML -}}
+*/ -}}
+{{ with .Attributes.title }}
+<span class="code__title">
+  <span>{{ . }}</span>
+  <span class="code__title--lang">{{ $.Type }}</span>
+</span>
+{{ end }}
+{{ if transform.CanHighlight .Type }}{{- /* Supported language */ -}}
+  {{- transform.Highlight .Inner .Type .Options | safeHTML -}}
+{{ else }}{{- /* Unsupported language: mimic the chroma structure for easier CSS control */ -}}
+  {{- /* new version using map */ -}}
+  {{- /* caution: the .Attributes variable names are all in lower case */ -}}
+  {{- $lineNos       := index .Attributes "linenos" | default "false" -}}
+  {{- $optionLineNos := dict "lineNos" $lineNos -}}
+  {{- $hl_lines      := index .Attributes  "hl_lines" | default "" -}}
+  {{- $optionHlLines := dict "hl_lines" $hl_lines -}}
+  {{- $linenostart   := index .Attributes "linenostart" | default 1 -}}
+  {{- $linenostart    = int $linenostart -}}
+  {{- $optionLinenostart := dict "linenostart" $linenostart -}}
+  {{- $options := merge $optionLineNos $optionHlLines -}}
+  {{- $options  = merge $options $optionLinenostart -}}
+  {{- transform.Highlight .Inner .Type $options | safeHTML -}}
+{{- /* old code for reference:
+  <div class="highlight">
+    <pre tabindex="0" class="chroma"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">
+      {{- $lines := split .Inner "\n" -}}
+      {{- range $lines -}}
+      <span class="line"><span class="cl">{{ . }}</span></span>
+      {{- end -}}
+    </code></pre>
+  </div>
+*/ -}}
+{{ end }}

@@ -4,10 +4,15 @@
 {{- $filePath := .Get "file" -}}
 {{- $fileJSON := getJSON $urlPre "/repos/" $userID "/" $repoID "/contents/" $filePath (dict "X-GitHub-Api-Version" "2022-11-28") -}}
 {{- $lang     := .Get "lang" | default "guessSyntax=true" -}}
-{{- $lineNos  := .Get "lineNos" | default "false" -}}
-{{- $optionLineNos := printf "%s" $lineNos | printf "%s%s" "lineNos=" | printf "%s" -}}
-{{- $hlLines  := .Get "hlLines" | default "" -}}
-{{- $optionHlLines := printf "%s" $hlLines | printf "%s%s" "hl_Lines=" | printf "%s" -}}
+{{- $lineNos           := .Get "linenos" | default "false" -}}
+{{- $optionLineNos     := dict "lineNos" $lineNos -}}
+{{- $hl_lines          := .Get  "hl_lines" | default "" -}}
+{{- $optionHlLines     := dict "hl_lines" $hl_lines -}}
+{{- $linenostart       := .Get "linenostart" | default 1 -}}
+{{- $linenostart        = int $linenostart -}}
+{{- $optionLinenostart := dict "linenostart" $linenostart -}}
+{{- $options           := merge $optionLineNos $optionHlLines -}}
+{{- $options            = merge $options $optionLinenostart -}}
 {{- /*
 
 Note: Only files (no directories) are supported.
@@ -21,11 +26,14 @@ GitHub API doc: https://docs.github.com/en/rest/repos/contents?apiVersion=2022-1
 
 Embed GitHub: https://emgithub.com/
 
+TODO
+----
+Actually support linenostart (as in: getting only certain lines of the file)
+
 */ -}}
-<span class="gist__name">
+<span class="code__title">
 <span>GitHub File: <a href="{{- printf "%s" $fileJSON.html_url -}}">{{- $userID -}}/{{- $repoID -}}/{{- $filePath -}}</a></span>
-<span class="gist__name--lang">{{ $lang }}</span>
+<span class="code__title--lang">{{ $lang }}</span>
 </span>
 {{- $content := printf "%s" $fileJSON.content | base64Decode | htmlUnescape | safeHTML -}}
-{{- $options := slice $optionLineNos $optionHlLines -}}
-{{- transform.Highlight $content $lang (delimit $options ",") -}}
+{{- transform.Highlight $content $lang $options -}}

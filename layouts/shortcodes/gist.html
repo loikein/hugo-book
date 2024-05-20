@@ -4,11 +4,16 @@
 {{- $fileName := .Get "file" -}}
 {{- $gistJSON := getJSON $urlPre "/gists/" $gistID -}}
 {{- $lang     := .Get "lang" | default "guessSyntax=true" -}}
-{{- $lineNos  := .Get "lineNos" | default "false" -}}
-{{- $optionLineNos := printf "%s" $lineNos | printf "%s%s" "lineNos=" | printf "%s" -}}
-{{- $hlLines  := .Get "hlLines" | default "" -}}
-{{- $optionHlLines := printf "%s" $hlLines | printf "%s%s" "hl_Lines=" | printf "%s" -}}
 {{- $useEmbed := .Get "embed" | default "false" -}}
+{{- $lineNos           := .Get "linenos" | default "false" -}}
+{{- $optionLineNos     := dict "lineNos" $lineNos -}}
+{{- $hl_lines          := .Get  "hl_lines" | default "" -}}
+{{- $optionHlLines     := dict "hl_lines" $hl_lines -}}
+{{- $linenostart       := .Get "linenostart" | default 1 -}}
+{{- $linenostart        = int $linenostart -}}
+{{- $optionLinenostart := dict "linenostart" $linenostart -}}
+{{- $options           := merge $optionLineNos $optionHlLines -}}
+{{- $options            = merge $options $optionLinenostart -}}
 {{- /*
 
 json dot: https://discourse.gohugo.io/t/accessing-json-data-files-with-extra-dots-in-file-names/15498/7
@@ -16,17 +21,20 @@ remote file: https://discourse.gohugo.io/t/include-content-of-a-url/27357/7
 https://gohugo.io/content-management/shortcodes/#gist
 https://gohugo.io/functions/highlight/#examples
 
+TODO
+----
+Actually support linenostart (as in: getting only certain lines of the file)
+
 */ -}}
 {{- if eq $useEmbed "false" -}}
 {{- range $key, $value := $gistJSON.files -}}
 {{- if (eq $key $fileName) -}}
-<span class="gist__name">
+<span class="code__title">
 <span>GitHub Gist: <a href="https://gist.github.com/{{ $userID }}/{{ $gistID }}">{{- printf "%s" $key -}}</a></span>
-<span class="gist__name--lang">{{ $lang }}</span>
+<span class="code__title--lang">{{ $lang }}</span>
 </span>
 {{- $content := printf "%s" $value.content | htmlUnescape | safeHTML -}}
-{{- $options := slice $optionLineNos $optionHlLines -}}
-{{- transform.Highlight $content $lang (delimit $options ",") -}}
+{{- transform.Highlight $content $lang $options -}}
 {{- end -}}
 {{- end -}}
 {{- else -}}{{- /* if not embed */ -}}
