@@ -93,7 +93,7 @@
 
 {{ define "main" }}
   {{ partial "docs/breadcrumbs" . }}
-  <article class="markdown book-article">{{- /* <main class="markdown" id="main"> */ -}}
+  <main class="markdown book-article" id="main">
     {{- .Title | printf "%s%s" "# " | printf "%s" | markdownify -}}
     {{- partial "docs/out-of-date" . -}}
     {{- .Content -}}
