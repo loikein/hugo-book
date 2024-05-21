@@ -93,8 +93,8 @@
 
 {{ define "main" }}
   {{ partial "docs/breadcrumbs" . }}
-  <main class="markdown" id="main">
-    {{- .Title | printf "%s%s" "# " | printf "%s" | markdownify -}}
+  <main class="markdown" id="main" data-pagefind-body>
+    <h1 data-pagefind-meta="title" data-weight="10">{{- .Title | markdownify -}}</h1>
     {{- partial "docs/out-of-date" . -}}
     {{- .Content -}}
   </main>
