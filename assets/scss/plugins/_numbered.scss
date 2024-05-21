@@ -1,7 +1,7 @@
 $startLevel: 2;
 $endLevel: 6;
 
-.book-page .markdown {
+.book-page .markdown.book-article {
   @for $currentLevel from $startLevel through $endLevel {
     > h#{$currentLevel}:not(.nonumber) {
       counter-increment: h#{$currentLevel};
@@ -22,7 +22,6 @@ $endLevel: 6;
 .book-toc nav ul,
 #TableOfContents ul {
   counter-reset: item;
-
   li {
     counter-increment: item;
 

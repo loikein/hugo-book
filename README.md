@@ -6,7 +6,7 @@
 
 ### [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
-![Screenshot](https://github.com/alex-shpak/hugo-book/blob/master/images/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/alex-shpak/hugo-book/master/images/screenshot.png)
 
 - [Features](#features)
 - [Requirements](#requirements)
@@ -56,8 +56,8 @@ Main differences
 
 ## Requirements
 
-- Hugo 0.115.0 or higher \(due to use of new language configuration\)
-- Hugo extended version, read more [here](https://gohugo.io/news/0.48-relnotes/)
+- Hugo 0.115.0 or higher
+- Hugo extended version, [Installation Instructions](https://gohugo.io/installation/)
 
 ## Installation
 
@@ -85,7 +85,7 @@ Start with initializing hugo modules, if not done yet:
 hugo mod init github.com/repo/path
 ```
 
-Navigate to your hugo project root and add [module] section to your `config.toml`:
+Navigate to your hugo project root and add [module] section to your `hugo.toml`:
 
 ```toml
 [module]
@@ -165,7 +165,7 @@ A blog is not the primary usecase of this theme, so it has only minimal features
 
 ### Site Configuration
 
-There are a few configuration options that you can add to your `config.toml` file.  
+There are a few configuration options that you can add to your `hugo.toml` file.  
 You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
 
 ```toml
@@ -321,7 +321,7 @@ In addition to this, there are several empty partials you can override to easily
 
 ### Plugins
 
-There are a few features implemented as plugable `scss` styles. Usually these are features that don't make it to the core but can still be useful.
+There are a few features implemented as pluggable `scss` styles. Usually these are features that don't make it to the core but can still be useful.
 
 | Plugin                            | Description                                                 |
 | --------------------------------- | ----------------------------------------------------------- |

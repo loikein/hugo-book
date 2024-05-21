@@ -1,11 +1,12 @@
 ---
 title: KaTeX
 ---
-
 KaTeX ~~shortcode~~ let you render math typesetting in markdown document. See [KaTeX](https://katex.org/)
 
 ## Example
-{{< columns >}}
+
+<div class="book-columns flex flex-wrap">
+  <div class="flex-even markdown-inner">
 
 ```latex
 `$$
@@ -13,13 +14,15 @@ f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
 $$`
 ```
 
-<--->
+  </div>
+  <div class="flex-even markdown-inner">
 
 `$$
 f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
 $$`
 
-{{< /columns >}}
+  </div>
+</div>
 
 ## Display Mode Example
 
