@@ -5,20 +5,22 @@
 {{- end -}}
 {{- $label := $.Page.Scratch.Get "spoilerCounter" -}}
 
-{{- $block := .Get "block" | default "false" -}}
+{{- $block := .Get "block" | default false -}}
 {{- $summary := .Get "summary" | default "Spoiler" -}}
+{{- $open := .Get "open" | default false -}}
 
-{{- if eq $block "false" -}}{{/* if is inline */}}
-{{/*
+{{- if eq $block false -}}{{- /* if is inline */ -}}
+{{- /*
+  https://github.com/loikein/hugo-book/blob/master/layouts/shortcodes/spoiler.html
   Goal: keyboard friendly.
   Idea: https://stackoverflow.com/questions/62322298/
- */}}
-<span aria-label="spoiler">
-<input type="checkbox" id="spoiler-{{ $label }}" class="spoiler-toggle screen-reader" aria-label="spoiler toggle"/>
-<label for="spoiler-{{ $label }}" class="spoiler-inline" aria-label="spoiler content">{{ .Inner | .Page.RenderString }}</label>
+ */ -}}
+<span aria-label="spoiler" title="Spoiler">{{- /* chomp whitespace */ -}}
+<input type="checkbox" id="spoiler-{{ $label }}" class="spoiler-toggle screen-reader" aria-label="spoiler toggle"/>{{- /* chomp whitespace */ -}}
+<label for="spoiler-{{ $label }}" class="spoiler-inline" aria-label="spoiler content">{{ .Inner | .Page.RenderString }}</label>{{- /* chomp whitespace */ -}}
 </span>
-{{- else -}}{{/* if is block */}}
-<details class="spoiler" aria-label="spoiler">
+{{- else -}}{{- /* if is block */ -}}
+<details class="spoiler" aria-label="spoiler" title="Spoiler" {{ if eq $open true}}open{{ end }}>
   <summary>{{ $summary | .Page.RenderString }}</summary>
   <div class="markdown-inner" aria-label="spoiler content">
     {{ .Inner | .Page.RenderString }}
