@@ -2,7 +2,20 @@
 {{- $userID   := .Get "user" | default "loikein" -}}
 {{- $gistID   := .Get "gist" -}}
 {{- $fileName := .Get "file" -}}
-{{- $gistJSON := getJSON $urlPre "/gists/" $gistID -}}
+
+{{- $gistJSON := dict -}}
+{{- $url := (print $urlPre "/gists/" $gistID) -}}
+{{- with resources.GetRemote $url -}}
+  {{- with .Err -}}
+    {{- errorf "%s" . -}}
+  {{- else -}}
+    {{- $gistJSON = . | transform.Unmarshal -}}
+  {{- end -}}
+{{- else -}}
+  {{- errorf "Unable to get remote resource %q" $url -}}
+{{- end -}}
+{{- /* <pre>{{ debug.Dump $gistJSON }}</pre> */ -}}
+
 {{- $lang     := .Get "lang" | default "guessSyntax=true" -}}
 {{- $useEmbed := .Get "embed" | default "false" -}}
 {{- $lineNos           := .Get "linenos" | default "false" -}}

@@ -16,6 +16,17 @@ enableGitInfo = true
 [markup.tableOfContents]
   startLevel = 1
 
+# Privacy settings
+# See https://gohugo.io/about/privacy/
+[privacy]
+  [privacy.twitter]
+    enableDNT = true
+    simple = true
+
+[services]
+  [services.twitter]
+    disableInlineCSS = true
+
 # Multi-lingual mode config
 # There are different options to translate files
 # See https://gohugo.io/content-management/multilingual/#translation-by-filename

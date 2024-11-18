@@ -2,7 +2,24 @@
 {{- $userID   := .Get "user" | default "loikein" -}}
 {{- $repoID   := .Get "repo" -}}
 {{- $filePath := .Get "file" -}}
-{{- $fileJSON := getJSON $urlPre "/repos/" $userID "/" $repoID "/contents/" $filePath (dict "X-GitHub-Api-Version" "2022-11-28") -}}
+
+{{- $opts := dict
+  "headers" (dict "X-GitHub-Api-Version" "2022-11-28")
+-}}
+
+{{- $fileJSON := dict -}}
+{{- $url := (print $urlPre "/repos/" $userID "/" $repoID "/contents/" $filePath) -}}
+{{- with resources.GetRemote $url $opts -}}
+  {{- with .Err -}}
+    {{- errorf "%s" . -}}
+  {{- else -}}
+    {{- $fileJSON = . | transform.Unmarshal -}}
+  {{- end -}}
+{{- else -}}
+  {{- errorf "Unable to get remote resource %q" $url -}}
+{{- end -}}
+{{- /* <pre>{{ debug.Dump $fileJSON }}</pre> */ -}}
+
 {{- $lang     := .Get "lang" | default "guessSyntax=true" -}}
 {{- $lineNos           := .Get "linenos" | default "false" -}}
 {{- $optionLineNos     := dict "lineNos" $lineNos -}}

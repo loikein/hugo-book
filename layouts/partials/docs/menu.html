@@ -1,7 +1,7 @@
 <nav aria-label="Site navigation">
 {{ partialCached "docs/brand" . }}
 {{ partialCached "docs/search" . }}
-{{ if .Site.IsMultiLingual }}
+{{ if hugo.IsMultilingual }}
   {{ partialCached "docs/languages" . }}
 {{ end }}
 

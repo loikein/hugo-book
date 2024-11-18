@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@2/modern-normalize.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 {{/* Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website */}}
-{{- $styles := resources.Get "scss/book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify }}
+{{- $styles := resources.Get "scss/book.scss" | resources.ExecuteAsTemplate "book.scss" . | css.Sass | resources.Minify }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" {{ template "integrity" $styles }}>
 
 {{/* custom CSS (site wide) under ./assets/css/ */}}
