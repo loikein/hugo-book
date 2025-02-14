@@ -48,7 +48,7 @@ img {
   @include outline;
 }
 
-// All aside, all screen sizes
+// All aside (menu & toc), all screen sizes
 aside {
   hr {
     height: $padding-1;
@@ -70,7 +70,8 @@ aside {
 
     a {
       display: block;
-      text-decoration: none;
+      text-decoration-line: none;
+      color: unset;
     }
 
     ul {
@@ -132,6 +133,20 @@ ul.pagination {
 
   a.active {
     color: var(--color-link);
+  }
+
+  li:hover>a {
+    // menu items without children
+    // text-decoration-line: underline;
+    text-decoration-line: underline;
+  }
+
+  li>label>a:hover {
+    // menu items with children
+    // because clicking label area outside <a>
+    // does not open the page
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
   }
 
   input.toggle {
@@ -275,16 +290,10 @@ body[dir="rtl"] .book-menu {
   nav > ul > li:first-child {
     margin-top: 0;
   }
-}
 
-// For both desktop & mobile TOC
-#TableOfContents {
-  a {
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  li>a:hover {
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
   }
 }
 
