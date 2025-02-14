@@ -32,18 +32,16 @@
     <input type="checkbox" id="section-{{ md5 .Page }}" class="toggle" {{ if or $current $ancestor }}checked{{ end }} />
     <label for="section-{{ md5 .Page }}" class="flex justify-between">
       <a {{ if .Page.Content }}href="{{ .Page.RelPermalink }}"{{ else }}role="button"{{ end }} class="{{ if $current }}active{{ end }}">
-        {{- partial "docs/title" .Page -}}
+        {{ if .Page.Draft }}(DRAFT)&#32;{{ end }}{{- partial "docs/title" .Page -}}
       </a>
     </label>
   {{ else if .Page.Params.BookHref }}
     <a href="{{ .Page.Params.BookHref }}" class="{{ if $current }}active{{ end }}" target="_blank" rel="noopener">
-      {{- partial "docs/title" .Page -}}
-    </a>
-  {{ else if .Page.Content }}
-    <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }}">
-      {{- partial "docs/title" .Page -}}
+      {{ if .Page.Draft }}(DRAFT)&#32;{{ end }}{{- partial "docs/title" .Page -}}
     </a>
   {{ else }}
-    <span>{{- partial "docs/title" .Page -}}</span>
+    <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }}">
+      {{ if .Page.Draft }}(DRAFT)&#32;{{ end }}{{- partial "docs/title" .Page -}}
+    </a>
   {{ end }}
 {{ end }}

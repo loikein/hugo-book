@@ -10,17 +10,17 @@
       <dl>
       {{ range .Page.Pages }}
         <dt>
-          <a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a>
+            {{ if .Draft }}(DRAFT)&#32;{{ end }}<a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a>
         </dt>
         <dd class="markdown-inner">
           {{- if .Description -}}
             {{- .Description -}}
           {{- else if .IsPage -}}
-            {{- .Summary | truncate 140 -}}
+            {{- .Summary | truncate 140 | plainify -}}
           {{- else -}}
             <ul>
               {{ range .Pages }}
-              <li><a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a></li>
+              <li>{{ if .Draft }}(DRAFT)&#32;{{ end }}<a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a></li>
               {{ end }}
             </ul>
           {{- end -}}
