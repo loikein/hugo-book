@@ -5,14 +5,14 @@
 
 {{- $gistJSON := dict -}}
 {{- $url := (print $urlPre "/gists/" $gistID) -}}
-{{- with resources.GetRemote $url -}}
+{{- with try (resources.GetRemote $url) -}}
   {{- with .Err -}}
-    {{- errorf "%s" . -}}
+    {{ errorf "%s" . }}
+  {{- else with .Value -}}
+    {{- $gistJSON  = . | transform.Unmarshal -}}
   {{- else -}}
-    {{- $gistJSON = . | transform.Unmarshal -}}
+    {{ errorf "Unable to get remote resource %q" $url }}
   {{- end -}}
-{{- else -}}
-  {{- errorf "Unable to get remote resource %q" $url -}}
 {{- end -}}
 {{- /* <pre>{{ debug.Dump $gistJSON }}</pre> */ -}}
 

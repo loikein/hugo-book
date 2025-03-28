@@ -57,7 +57,7 @@ Main differences
 
 ## Requirements
 
-- Hugo 0.115.0 or higher
+- Hugo 0.141.0 or higher
 - Hugo extended version, [Installation Instructions](https://gohugo.io/installation/)
 
 ## Installation

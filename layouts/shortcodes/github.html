@@ -9,15 +9,17 @@
 
 {{- $fileJSON := dict -}}
 {{- $url := (print $urlPre "/repos/" $userID "/" $repoID "/contents/" $filePath) -}}
-{{- with resources.GetRemote $url $opts -}}
+
+{{- with try (resources.GetRemote $url $opts) -}}
   {{- with .Err -}}
-    {{- errorf "%s" . -}}
+    {{ errorf "%s" . }}
+  {{- else with .Value -}}
+    {{- $fileJSON  = . | transform.Unmarshal -}}
   {{- else -}}
-    {{- $fileJSON = . | transform.Unmarshal -}}
+    {{ errorf "Unable to get remote resource %q" $url }}
   {{- end -}}
-{{- else -}}
-  {{- errorf "Unable to get remote resource %q" $url -}}
 {{- end -}}
+
 {{- /* <pre>{{ debug.Dump $fileJSON }}</pre> */ -}}
 
 {{- $lang     := .Get "lang" | default "guessSyntax=true" -}}
