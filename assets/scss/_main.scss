@@ -162,6 +162,7 @@ ul.pagination {
     &:checked + label + ul {
       display: block;
       visibility: visible;
+      border-left: 1px solid #e3e8ed;
     }
 
     &+ label::after {
