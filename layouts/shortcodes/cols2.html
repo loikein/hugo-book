@@ -10,9 +10,11 @@ https://github.com/jmooring/hugo-testing/blob/hugo-forum-topic-43832/layouts/sho
 {{- $cols := split .Inner "||" -}}
 {{- $lang := .Get "lang" | default ( .Get 0 ) -}}
 {{- $lang  = split $lang "," -}}
+{{- $wrap := .Get 1 | default "false" -}}
 <div class="book-columns flex flex-wrap">
   {{- range $indCol,$col := $cols -}}
-  <div class="flex-even markdown-inner" {{ with $lang }}lang="{{ index $lang $indCol }}"{{ end }}>
+  <div class="flex-even markdown-inner" {{ with $lang }}lang="{{ index $lang $indCol }}"{{ end }} {{ if (ne $wrap "false") }}style="white-space:pre-wrap;"{{ end }}>
+    {{- /* extra space here if wrap, but will disappear with hugo's `--minify` flag. */}}
     {{ . | safeHTML -}}
   </div>
   {{- end -}}
